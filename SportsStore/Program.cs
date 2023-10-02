@@ -9,6 +9,7 @@ builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
 });
 
+builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
 
 var app = builder.Build();
 
@@ -17,5 +18,7 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 app.MapDefaultControllerRoute();
+
+SeedData.EnsurePopulated(app);
 
 app.Run();
