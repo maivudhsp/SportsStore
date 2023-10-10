@@ -1,10 +1,12 @@
-﻿@model IQueryable<Product>
+﻿@model ProductsListViewModel
 
-@foreach( var item in Model ?? Enumerable.Empty<Product>())
+@foreach (var item in Model?.Products ?? Enumerable.Empty<Product>())
 {
-    <div>
-        <h3>@item.Name</h3>
-        @item.Description
-        <h4>@item.Price.ToString("c")</h4>
-    </div>
+    @await Html.PartialAsync("_ProductSummary", item)
 }
+
+<div page-model="@Model?.PagingInfo" page-action="Index" page-classes-enable="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" page-url-category="@Model?.CurrentCategory!"
+     class="btn-group pull-right m-1">
+</div>
