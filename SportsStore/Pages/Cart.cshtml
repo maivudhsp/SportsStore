@@ -1,3 +1,35 @@
 ﻿@page
-@model SportsStore.Pages.CartModel
-<h2>This Is The Cart Page</h2>
+@model CartModel
+<h2>This Is Your Cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th class="text-righ">Price</th>
+            <th class="text-right">SubTotal</th>
+        </tr>       
+    </thead>
+    <tbody>
+        @foreach( var line in Model?.Cart?.Lines ?? Enumerable.Empty<CartLine>())
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-center">@line.Product.Name</td>
+                <td class="text-center">@line.Product.Price.ToString("c")</td>
+                <td class="text-center">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model?.Cart?.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model?.ReturnUrl">Continue Shopping</a>
+</div>
