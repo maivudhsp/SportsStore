@@ -8,6 +8,7 @@
             <th>Item</th>
             <th class="text-righ">Price</th>
             <th class="text-right">SubTotal</th>
+            <th></th>
         </tr>       
     </thead>
     <tbody>
@@ -18,6 +19,11 @@
                 <td class="text-center">@line.Product.Name</td>
                 <td class="text-center">@line.Product.Price.ToString("c")</td>
                 <td class="text-center">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+                <td class="text-center">
+                    <form>
+                        <button class="btn btn-danger btn-sm" type="submit">Remove</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
@@ -32,4 +38,5 @@
 </table>
 <div class="text-center">
     <a class="btn btn-primary" href="@Model?.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Order">Check out</a>
 </div>

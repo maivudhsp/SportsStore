@@ -3,7 +3,7 @@
     public class Cart
     {
         public List<CartLine> Lines { get; set; } = new List<CartLine>();
-        public void AddItem(Product product, int quantity)
+        public virtual void AddItem(Product product, int quantity)
         {
             CartLine? line = Lines.Where(p=>p.Product.ProductId == product.ProductId).FirstOrDefault();
 
@@ -16,12 +16,12 @@
             }
         }
 
-        public void RemoveLine(Product product)
+        public virtual void RemoveLine(Product product)
         {
             Lines.RemoveAll(l => l.Product.ProductId == product.ProductId);
         }
         public decimal ComputeTotalValue() => Lines.Sum(l => l.Product.Price * l.Quantity);
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
        
     }
     public class CartLine
