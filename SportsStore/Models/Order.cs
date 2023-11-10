@@ -14,8 +14,10 @@ namespace SportsStore.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter the first address line")]
         public string Line1 { get; set; }
-        public string Line2 { get; set; }
-        public string Line3 { get; set; }
+
+        public string? Line2 { get; set; }
+        public string? Line3 { get; set; }
+
         [Required(ErrorMessage = "Please enter city Name")]
         public string City { get; set; }
         [Required(ErrorMessage = "Please enter state Name")]
@@ -24,5 +26,8 @@ namespace SportsStore.Models
         [Required(ErrorMessage = "Please enter country Name")]
         public string Country { get; set; }
         public bool GiftWarp { get; set; }
+
+        [BindNever]
+        public bool Shipped { get; set; }
     }
 }

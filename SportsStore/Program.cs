@@ -11,6 +11,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddDbContext<StoreDbContext>(options =>
 {
@@ -43,6 +44,8 @@ app.MapControllerRoute("pagination",
 app.MapDefaultControllerRoute();
 //Use RazorPage
 app.MapRazorPages();
+app.MapBlazorHub();
+app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
 SeedData.EnsurePopulated(app);
 

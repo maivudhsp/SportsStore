@@ -23,4 +23,11 @@
     <Folder Include="wwwroot\lib\bootstrap\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

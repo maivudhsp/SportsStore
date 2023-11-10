@@ -13,7 +13,7 @@ namespace SportsStore.Controllers
         {
             _repo = repo;
         }
-        public IActionResult Index(string? category, int productPage = 1)
+        public ViewResult Index(string? category, int productPage = 1)
         {
             return View(
                 new ProductsListViewModel
