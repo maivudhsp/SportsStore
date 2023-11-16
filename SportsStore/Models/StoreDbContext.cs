@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace SportsStore.Models
 {
-    public class StoreDbContext : DbContext
+    public class StoreDbContext : IdentityDbContext<IdentityUser>
     {
         public StoreDbContext(DbContextOptions<StoreDbContext> options): base(options)
         {}
